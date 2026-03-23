@@ -21,7 +21,7 @@ import nibabel as nib
 # ══════════════════════════════════════════════════════════════
 
 def get_train_transforms():
-    """Light affine-only augmentation (proven most impactful by nnU-Net ablation)."""
+    """Affine augmentation only — flips, scale, translate, rotate."""
     return A.Compose([
         A.HorizontalFlip(p=0.5),
         A.Affine(
