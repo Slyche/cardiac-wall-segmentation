@@ -1,6 +1,6 @@
 # Cardiac Structure Segmentation in 2D Echocardiography
 
-Automated segmentation of cardiac structures (left ventricle, myocardium, left atrium) from 2D echocardiographic images using U-Net architectures trained on the [CAMUS dataset](https://www.creatis.insa-lyon.fr/Challenge/camus/).
+Cardiac structure segmentation (LV, myocardium, left atrium) from 2D echo, trained on the [CAMUS dataset](https://www.creatis.insa-lyon.fr/Challenge/camus/) with a U-Net + ResNet34 encoder.
 
 > **0.910 mean foreground Dice** with 5-fold patient-level cross-validation — outperforming nnU-Net (~0.893) on CAMUS through systematic experimentation across 20+ configurations.
 
@@ -8,7 +8,7 @@ Automated segmentation of cardiac structures (left ventricle, myocardium, left a
 
 ## Approach
 
-U-Net with pretrained ResNet34 encoder, SCSE decoder attention, and deep supervision (24.5M parameters). Trained with DiceCE loss (CE=0.3, Dice=0.7), AdamW with differential learning rates (encoder 3e-5, decoder 3e-4), and CosineAnnealingLR. Evaluation follows nnU-Net conventions: 1000 epochs, 250 batches/epoch, patience 100, with test-time augmentation at inference.
+U-Net with pretrained ResNet34 encoder, SCSE decoder attention, and deep supervision (24.5M parameters). Trained with DiceCE loss (CE=0.3, Dice=0.7), AdamW with differential learning rates (encoder 3e-5, decoder 3e-4), and CosineAnnealingLR. Evaluation follows nnU-Net conventions (1000 epochs, 250 batches/epoch, patience 100). Test-time augmentation is applied at inference.
 
 All results use **patient-level 5-fold cross-validation** — images from the same patient never appear in both training and validation sets.
 
