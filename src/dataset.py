@@ -185,6 +185,7 @@ class CAMUSDataModule(pl.LightningDataModule):
         return DataLoader(self.train_dataset, batch_size=self.batch_size,
                           shuffle=True, num_workers=self.num_workers,
                           persistent_workers=True, pin_memory=True)
+        
 
     def val_dataloader(self):
         return DataLoader(self.val_dataset, batch_size=self.batch_size,
